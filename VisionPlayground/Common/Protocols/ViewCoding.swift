@@ -14,7 +14,6 @@ protocol ViewCoding: class {
     func buildViewHierarchy()
     func setupConstraints()
     func configureViews()
-    
 }
 
 extension ViewCoding {
@@ -26,5 +25,4 @@ extension ViewCoding {
     }
     
     func configureViews() {}
-    
 }
