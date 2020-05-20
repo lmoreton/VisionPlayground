@@ -14,8 +14,7 @@ class HomeCoordinator: Coordinator {
     
     func start() {
         let homeViewController = HomeViewController()
-        homeViewController.view.backgroundColor = .systemRed
-        
+
         navigationController.viewControllers = [ homeViewController ]
     }
     
