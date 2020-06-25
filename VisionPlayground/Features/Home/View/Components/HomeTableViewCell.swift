@@ -26,7 +26,8 @@ class HomeTableViewCell: UITableViewCell {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         image.layer.cornerRadius = 8
-        image.layer.masksToBounds = true
+        image.clipsToBounds = true
+        image.backgroundColor = .gray
         return image
     }()
     lazy var contentStackView: UIStackView = {
@@ -57,6 +58,10 @@ extension HomeTableViewCell {
 
 extension HomeTableViewCell: ViewCoding {
     
+    func configureViews() {
+//        selectionStyle = .none
+    }
+    
     func buildViewHierarchy() {
         contentStackView.addArrangedSubview(contentLabel)
         contentStackView.addArrangedSubview(confidenceLabel)
@@ -66,15 +71,22 @@ extension HomeTableViewCell: ViewCoding {
     
     func setupConstraints() {
         
-        NSLayoutConstraint.activate([
-            itemImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
-            itemImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
-            itemImageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: 8),
-            itemImageView.heightAnchor.constraint(equalToConstant: 64),
-            itemImageView.widthAnchor.constraint(equalToConstant: 64),
-            contentStackView.leadingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: 8),
-            contentStackView.centerYAnchor.constraint(equalTo: itemImageView.centerYAnchor),
-            contentStackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16)
-        ])
+        itemImageView.constraint { view in
+            return [
+                view.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 8),
+                view.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+                view.bottomAnchor.constraint(lessThanOrEqualTo: self.contentView.bottomAnchor, constant: -8),
+                view.heightAnchor.constraint(equalTo: view.widthAnchor),
+                view.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.35),
+            ]
+        }
+        
+        contentStackView.constraint { view in
+            return [
+                view.leadingAnchor.constraint(equalTo: itemImageView.trailingAnchor, constant: 8),
+                view.centerYAnchor.constraint(equalTo: itemImageView.centerYAnchor),
+                view.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16)
+            ]
+        }
     }
 }
