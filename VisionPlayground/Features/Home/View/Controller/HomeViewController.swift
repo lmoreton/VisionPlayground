@@ -21,11 +21,15 @@ class HomeViewController: UIViewController {
         return tableView
     }()
     var homeTableViewDataSourceDelegate: HomeTableViewDataSourceDelegate?
-    var viewModel: HomeViewModel?
+    var viewModel: HomeViewModelProtocol
     
-    convenience init(viewModel: HomeViewModel) {
-        self.init()
+    init(viewModel: HomeViewModelProtocol) {
         self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -33,6 +37,20 @@ class HomeViewController: UIViewController {
         
         setupViewConfiguration()
         title = "SHREK"
+        
+        configure(navigationController: self.navigationController!)
+        _ = viewModel.retrieveAllItems()
+    }
+    
+    private func configure(navigationController: UINavigationController) {
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addTapped))
+        barButtonItem.tintColor = .systemIndigo
+        navigationController.visibleViewController?.navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    @objc func addTapped() {
+        viewModel.addItem(Item(confidence: "0.9", image: "pikachu", text: "XABLAU"))
+        print("oi")
     }
     
     func registerCells() {
@@ -48,7 +66,7 @@ extension HomeViewController: ViewCoding {
     func configureViews() {
         registerCells()
         
-        homeTableViewDataSourceDelegate = HomeTableViewDataSourceDelegate(items: viewModel?.homeDataFetcher.items() ?? [])
+        homeTableViewDataSourceDelegate = HomeTableViewDataSourceDelegate(viewModel: self.viewModel)
         tableView.delegate = homeTableViewDataSourceDelegate
         tableView.dataSource = homeTableViewDataSourceDelegate
     }
@@ -58,9 +76,15 @@ extension HomeViewController: ViewCoding {
             return [
                 view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
                 view.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
-                view.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+                view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
                 view.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor)
             ]
         }
+    }
+}
+
+extension HomeViewController: HomeViewProtocol {
+    func reloadDataSource() {
+        tableView.reloadData()
     }
 }

@@ -8,10 +8,36 @@
 
 import Foundation
 
-class HomeViewModel {
+protocol HomeViewModelProtocol {
+    var items: Observable<[Item]>? {get set}
+    func retrieveAllItems() -> [Item]
+    func addItem(_ item: Item)
+}
+
+class HomeViewModel: HomeViewModelProtocol {
     var homeDataFetcher: HomeDataFetcher
+    var items: Observable<[Item]>?
+    weak var view: HomeViewProtocol?
+    weak var coordinator: HomeCoordinatorProtocol?
     
-    init(homeDataFetcher: HomeDataFetcher) {
+    init(homeDataFetcher: HomeDataFetcher = HomeDataFetcher(), coordinator: HomeCoordinatorProtocol?) {
+        self.coordinator = coordinator
         self.homeDataFetcher = homeDataFetcher
     }
+    
+    func retrieveAllItems() -> [Item] {
+        items = Observable(homeDataFetcher.items())
+        items?.valueChanged = { value in
+            self.view?.reloadDataSource()
+            print(value)
+        }
+        return homeDataFetcher.items()
+    }
+    
+    func addItem(_ item: Item) {
+        
+        self.items?.value.append(contentsOf: [item])
+
+    }
+    
 }

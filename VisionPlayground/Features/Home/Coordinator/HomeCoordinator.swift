@@ -8,17 +8,29 @@
 
 import UIKit
 
+protocol HomeCoordinatorProtocol: class {
+    func showForm()
+}
+
 class HomeCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
     
     func start() {
-        let homeViewController = HomeViewController(viewModel: HomeViewModel(homeDataFetcher: HomeDataFetcher()))
+        let viewModel = HomeViewModel(coordinator: self)
+        let homeViewController = HomeViewController(viewModel: viewModel)
+        viewModel.view = homeViewController
 
         navigationController.viewControllers = [ homeViewController ]
     }
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+}
+
+extension HomeCoordinator: HomeCoordinatorProtocol {
+    func showForm() {
+        
     }
 }

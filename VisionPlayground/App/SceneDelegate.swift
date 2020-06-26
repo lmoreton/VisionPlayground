@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
         
+//        configure(navigationController: navigationController)
         let appCoordinator = AppCoordinator(navigationController: navigationController)
         appCoordinator.start()
     }
@@ -57,5 +58,33 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
+    private func configureAppearance(navigationBar: UINavigationBar) {
+        let navBarAppearance = UINavigationBarAppearance()
+        
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.label]
+        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.label]
+        navBarAppearance.backgroundColor = .systemBackground
+        
+        navigationBar.prefersLargeTitles = true
+        navigationBar.standardAppearance = navBarAppearance
+        navigationBar.scrollEdgeAppearance = navBarAppearance
+    }
+    
+    private func configure(navigationController: UINavigationController) {
+//        configureAppearance(navigationBar: navigationController.navigationBar)
+        
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addTapped))
+        barButtonItem.tintColor = .systemIndigo
+        navigationController.visibleViewController?.navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    @objc func addTapped() {
+//        let ocrViewController = OCRViewController()
+        let ocrViewController = UIViewController()
+        
+        guard let navigationController = window?.rootViewController as? UINavigationController else { return }
+        navigationController.present(ocrViewController, animated: true)
+    }
 }
-

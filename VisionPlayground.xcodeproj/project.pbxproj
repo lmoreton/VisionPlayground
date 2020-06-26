@@ -15,6 +15,8 @@
 		E711043624A542FC00146686 /* HomeTableViewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711043524A542FC00146686 /* HomeTableViewDataSourceDelegate.swift */; };
 		E711043824A5547700146686 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711043724A5547700146686 /* HomeViewModel.swift */; };
 		E711043A24A5554200146686 /* HomeDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711043924A5554200146686 /* HomeDataFetcher.swift */; };
+		E711044024A69DDE00146686 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711043F24A69DDE00146686 /* Observable.swift */; };
+		E711044224A6B00900146686 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E711044124A6B00900146686 /* HomeViewProtocol.swift */; };
 		E71572B12475A0EE00EF2E06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71572B02475A0EE00EF2E06 /* AppDelegate.swift */; };
 		E71572B32475A0EE00EF2E06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71572B22475A0EE00EF2E06 /* SceneDelegate.swift */; };
 		E71572BA2475A0F000EF2E06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E71572B92475A0F000EF2E06 /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		E711043524A542FC00146686 /* HomeTableViewDataSourceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewDataSourceDelegate.swift; sourceTree = "<group>"; };
 		E711043724A5547700146686 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		E711043924A5554200146686 /* HomeDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataFetcher.swift; sourceTree = "<group>"; };
+		E711043F24A69DDE00146686 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		E711044124A6B00900146686 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
 		E71572AD2475A0EE00EF2E06 /* VisionPlayground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisionPlayground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E71572B02475A0EE00EF2E06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E71572B22475A0EE00EF2E06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +109,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E711043E24A69DC900146686 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				E711043F24A69DDE00146686 /* Observable.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		E71572A42475A0EE00EF2E06 = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +169,7 @@
 		E71572D32475A42F00EF2E06 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				E711043E24A69DC900146686 /* Util */,
 				E71572E82475C67500EF2E06 /* Protocols */,
 				C0486C7A2475BE7C00D55841 /* Extensions */,
 				E71572DE2475A6FB00EF2E06 /* Coordinator */,
@@ -205,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				E71572E32475AAC900EF2E06 /* HomeViewController.swift */,
+				E711044124A6B00900146686 /* HomeViewProtocol.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -342,11 +356,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E71572E42475AAC900EF2E06 /* HomeViewController.swift in Sources */,
+				E711044024A69DDE00146686 /* Observable.swift in Sources */,
 				E711043424A53E8600146686 /* UIView+NSLayoutConstraint.swift in Sources */,
 				C0486C802475C0B600D55841 /* Item.swift in Sources */,
 				C0486C822475C23300D55841 /* ViewCoding.swift in Sources */,
 				C0486C7C2475BE9C00D55841 /* UITableViewCell+Ext.swift in Sources */,
 				E71572E22475A9DF00EF2E06 /* AppCoordinator.swift in Sources */,
+				E711044224A6B00900146686 /* HomeViewProtocol.swift in Sources */,
 				E711043624A542FC00146686 /* HomeTableViewDataSourceDelegate.swift in Sources */,
 				C0486C792475BD9200D55841 /* HomeTableViewCell.swift in Sources */,
 				E711043A24A5554200146686 /* HomeDataFetcher.swift in Sources */,
