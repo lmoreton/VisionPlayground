@@ -12,6 +12,7 @@ protocol HomeViewModelProtocol {
     var items: Observable<[Item]>? {get set}
     func retrieveAllItems() -> [Item]
     func addItem(_ item: Item)
+    func deleteItem(_ itemIndex: Int)
 }
 
 class HomeViewModel: HomeViewModelProtocol {
@@ -38,6 +39,12 @@ class HomeViewModel: HomeViewModelProtocol {
         
         self.items?.value.append(contentsOf: [item])
 
+    }
+    
+    func deleteItem(_ itemIndex: Int) {
+        
+        self.items?.value.remove(at: itemIndex)
+        
     }
     
 }

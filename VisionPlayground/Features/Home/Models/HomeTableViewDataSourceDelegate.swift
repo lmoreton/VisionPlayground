@@ -35,7 +35,7 @@ class HomeTableViewDataSourceDelegate: NSObject, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            self.viewModel.items?.value.remove(at: indexPath.row)
+            self.viewModel.deleteItem(indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
     }
