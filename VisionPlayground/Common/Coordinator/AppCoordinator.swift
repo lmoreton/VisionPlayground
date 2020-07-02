@@ -14,11 +14,28 @@ class AppCoordinator: Coordinator {
     
     func start() {
         let homeCoordinator = HomeCoordinator(navigationController: navigationController)
+        configure(navigationController: navigationController)
+        
         homeCoordinator.start()
         childCoordinators.append(homeCoordinator)
     }
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+    
+    private func configure(navigationController: UINavigationController) {
+            Appearance.configure(navigationController.navigationBar)
+        
+        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addTapped))
+        barButtonItem.tintColor = .systemIndigo
+        navigationController.visibleViewController?.navigationItem.rightBarButtonItem = barButtonItem
+    }
+    
+    @objc func addTapped() {
+//        let ocrViewController = OCRViewController()
+        let ocrViewController = UIViewController()
+        
+        navigationController.present(ocrViewController, animated: true)
     }
 }
