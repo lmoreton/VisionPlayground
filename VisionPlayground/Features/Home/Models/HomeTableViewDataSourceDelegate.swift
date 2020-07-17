@@ -14,7 +14,7 @@ class HomeTableViewDataSourceDelegate: NSObject, UITableViewDelegate, UITableVie
     
     init(viewModel: HomeViewModelProtocol) {
 //        let item = Item(confidence: "0.9", image: "maquina", text: "MAQUINA")
-//        let pikachuItem = Item(confidence: "0.6", image: "pikachu", text: "PIKA PIKA DLÇ")
+//        let pikachuItem = Item(confidence: "0.6", image: "pikachu", text: "PIKA PIKA")
 //        self.items = [ item, pikachuItem, item, pikachuItem ]
         self.viewModel = viewModel
     }

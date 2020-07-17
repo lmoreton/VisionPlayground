@@ -11,7 +11,7 @@ import Foundation
 class HomeDataFetcher {
     func items() -> [Item] {
         let item = Item(confidence: "0.9", image: "maquina", text: "MAQUINA")
-        let pikachuItem = Item(confidence: "0.6", image: "pikachu", text: "PIKA PIKA DLÇ")
+        let pikachuItem = Item(confidence: "0.6", image: "pikachu", text: "PIKA PIKA")
         let items = [ item, pikachuItem, item, pikachuItem ]
         
         return items

@@ -36,7 +36,6 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setupViewConfiguration()
-        title = "SHREK"
         
         configure(navigationController: self.navigationController!)
         _ = viewModel.retrieveAllItems()
