@@ -42,7 +42,7 @@ class OCRViewController: UIViewController {
         button.titleLabel?.textColor = .white
         button.layer.cornerRadius = 7.0
         button.backgroundColor = .systemGray
-        button.isEnabled = false
+        button.isEnabled = true
         
         return button
     }()
@@ -98,6 +98,7 @@ class OCRViewController: UIViewController {
     
     @objc private func saveNewItem() {
         viewModel.saveNewItem()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc private func scanDocument() {

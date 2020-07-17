@@ -15,12 +15,14 @@ protocol HomeCoordinatorProtocol: class {
 class HomeCoordinator: Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
+    var viewModel: HomeViewModelProtocol?
     
     func start() {
         let viewModel = HomeViewModel(coordinator: self)
         let homeViewController = HomeViewController(viewModel: viewModel)
         viewModel.view = homeViewController
-
+        self.viewModel = viewModel
+        
         navigationController.viewControllers = [ homeViewController ]
     }
     
@@ -32,7 +34,15 @@ class HomeCoordinator: Coordinator {
 extension HomeCoordinator: HomeCoordinatorProtocol {
     func showOCR() {
         let ocrCoordinator = OCRCoordinator(navigationController: navigationController)
+        ocrCoordinator.delegate = self
         childCoordinators.append(ocrCoordinator)
         ocrCoordinator.start()
+    }
+}
+
+extension HomeCoordinator: OCRCoordinatorDelegate {
+    func ocrCoordinatorUserDidTapSaveItem(_ coordinator: OCRCoordinator, item: Item) {
+        self.viewModel?.addItem(item)
+        childCoordinators.remove(coordinator)
     }
 }

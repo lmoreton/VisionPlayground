@@ -21,8 +21,7 @@ class OCRViewModel: OCRViewModelProtocol {
     }
     
     func saveNewItem() {
-//        viewModel.addItem(Item(confidence: "0.9", image: "pikachu", text: "XABLAU"))
-        print("saveNewItem")
+        coordinator?.saveItem(Item(confidence: "0.9", image: "pikachu", text: "XABLAU"))
     }
     
     func scanDocument() {

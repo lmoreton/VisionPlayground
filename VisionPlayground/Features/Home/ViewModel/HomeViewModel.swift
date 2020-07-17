@@ -10,6 +10,7 @@ import Foundation
 
 protocol HomeViewModelProtocol {
     var items: Observable<[Item]>? { get set }
+    var view: HomeViewProtocol? { get set }
     func retrieveAllItems() -> [Item]
     func addItem(_ item: Item)
     func deleteItem(_ itemIndex: Int)
