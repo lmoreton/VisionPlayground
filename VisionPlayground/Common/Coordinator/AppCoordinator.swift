@@ -25,17 +25,6 @@ class AppCoordinator: Coordinator {
     }
     
     private func configure(navigationController: UINavigationController) {
-            Appearance.configure(navigationController.navigationBar)
-        
-        let barButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addTapped))
-        barButtonItem.tintColor = .systemIndigo
-        navigationController.visibleViewController?.navigationItem.rightBarButtonItem = barButtonItem
-    }
-    
-    @objc func addTapped() {
-//        let ocrViewController = OCRViewController()
-        let ocrViewController = UIViewController()
-        
-        navigationController.present(ocrViewController, animated: true)
+        Appearance.configure(navigationController.navigationBar)
     }
 }

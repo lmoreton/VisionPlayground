@@ -49,8 +49,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc func addTapped() {
-        viewModel.addItem(Item(confidence: "0.9", image: "pikachu", text: "XABLAU"))
-        print("oi")
+        viewModel.showOCR()
     }
     
     func registerCells() {
@@ -60,13 +59,15 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: ViewCoding {
     func buildViewHierarchy() {
-        self.view.addSubview(tableView)
+        view.addSubview(tableView)
     }
     
     func configureViews() {
+        title = "iOS Guild"
+        
         registerCells()
         
-        homeTableViewDataSourceDelegate = HomeTableViewDataSourceDelegate(viewModel: self.viewModel)
+        homeTableViewDataSourceDelegate = HomeTableViewDataSourceDelegate(viewModel: viewModel)
         tableView.delegate = homeTableViewDataSourceDelegate
         tableView.dataSource = homeTableViewDataSourceDelegate
     }

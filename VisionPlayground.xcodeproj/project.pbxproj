@@ -26,6 +26,10 @@
 		E71572E22475A9DF00EF2E06 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71572E12475A9DF00EF2E06 /* AppCoordinator.swift */; };
 		E71572E42475AAC900EF2E06 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71572E32475AAC900EF2E06 /* HomeViewController.swift */; };
 		E71572E72475AB2500EF2E06 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E71572E62475AB2500EF2E06 /* HomeCoordinator.swift */; };
+		E78A80E724AE1A500053FDF2 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78A80E624AE1A500053FDF2 /* Appearance.swift */; };
+		E78A80EA24AE20EC0053FDF2 /* OCRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78A80E924AE20EC0053FDF2 /* OCRViewController.swift */; };
+		E78A80EC24AE38730053FDF2 /* OCRCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E78A80EB24AE38730053FDF2 /* OCRCoordinator.swift */; };
+		E7B05C2F24BFF353003731B3 /* OCRViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B05C2E24BFF353003731B3 /* OCRViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +66,10 @@
 		E71572E12475A9DF00EF2E06 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		E71572E32475AAC900EF2E06 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		E71572E62475AB2500EF2E06 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		E78A80E624AE1A500053FDF2 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		E78A80E924AE20EC0053FDF2 /* OCRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRViewController.swift; sourceTree = "<group>"; };
+		E78A80EB24AE38730053FDF2 /* OCRCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRCoordinator.swift; sourceTree = "<group>"; };
+		E7B05C2E24BFF353003731B3 /* OCRViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCRViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				E711043F24A69DDE00146686 /* Observable.swift */,
+				E78A80E624AE1A500053FDF2 /* Appearance.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -181,6 +190,7 @@
 		E71572D42475A44200EF2E06 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				E78A80E124AE10270053FDF2 /* OCR */,
 				E71572D72475A4A700EF2E06 /* Home */,
 			);
 			path = Features;
@@ -253,6 +263,56 @@
 				C0486C812475C23300D55841 /* ViewCoding.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E78A80E124AE10270053FDF2 /* OCR */ = {
+			isa = PBXGroup;
+			children = (
+				E78A80E524AE104A0053FDF2 /* Coordinator */,
+				E78A80E424AE10430053FDF2 /* Models */,
+				E78A80E324AE103E0053FDF2 /* View */,
+				E78A80E224AE10380053FDF2 /* ViewModel */,
+			);
+			path = OCR;
+			sourceTree = "<group>";
+		};
+		E78A80E224AE10380053FDF2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E7B05C2E24BFF353003731B3 /* OCRViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		E78A80E324AE103E0053FDF2 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E78A80E824AE20DA0053FDF2 /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E78A80E424AE10430053FDF2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E78A80E524AE104A0053FDF2 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				E78A80EB24AE38730053FDF2 /* OCRCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		E78A80E824AE20DA0053FDF2 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E78A80E924AE20EC0053FDF2 /* OCRViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,15 +416,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				E71572E42475AAC900EF2E06 /* HomeViewController.swift in Sources */,
+				E7B05C2F24BFF353003731B3 /* OCRViewModel.swift in Sources */,
 				E711044024A69DDE00146686 /* Observable.swift in Sources */,
 				E711043424A53E8600146686 /* UIView+NSLayoutConstraint.swift in Sources */,
 				C0486C802475C0B600D55841 /* Item.swift in Sources */,
 				C0486C822475C23300D55841 /* ViewCoding.swift in Sources */,
+				E78A80E724AE1A500053FDF2 /* Appearance.swift in Sources */,
 				C0486C7C2475BE9C00D55841 /* UITableViewCell+Ext.swift in Sources */,
 				E71572E22475A9DF00EF2E06 /* AppCoordinator.swift in Sources */,
 				E711044224A6B00900146686 /* HomeViewProtocol.swift in Sources */,
 				E711043624A542FC00146686 /* HomeTableViewDataSourceDelegate.swift in Sources */,
 				C0486C792475BD9200D55841 /* HomeTableViewCell.swift in Sources */,
+				E78A80EA24AE20EC0053FDF2 /* OCRViewController.swift in Sources */,
+				E78A80EC24AE38730053FDF2 /* OCRCoordinator.swift in Sources */,
 				E711043A24A5554200146686 /* HomeDataFetcher.swift in Sources */,
 				E711043824A5547700146686 /* HomeViewModel.swift in Sources */,
 				E71572B12475A0EE00EF2E06 /* AppDelegate.swift in Sources */,

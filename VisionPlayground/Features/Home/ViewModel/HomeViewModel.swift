@@ -9,17 +9,18 @@
 import Foundation
 
 protocol HomeViewModelProtocol {
-    var items: Observable<[Item]>? {get set}
+    var items: Observable<[Item]>? { get set }
     func retrieveAllItems() -> [Item]
     func addItem(_ item: Item)
     func deleteItem(_ itemIndex: Int)
+    func showOCR()
 }
 
 class HomeViewModel: HomeViewModelProtocol {
     var homeDataFetcher: HomeDataFetcher
     var items: Observable<[Item]>?
-    weak var view: HomeViewProtocol?
-    weak var coordinator: HomeCoordinatorProtocol?
+    var view: HomeViewProtocol?
+    var coordinator: HomeCoordinatorProtocol?
     
     init(homeDataFetcher: HomeDataFetcher = HomeDataFetcher(), coordinator: HomeCoordinatorProtocol?) {
         self.coordinator = coordinator
@@ -36,15 +37,14 @@ class HomeViewModel: HomeViewModelProtocol {
     }
     
     func addItem(_ item: Item) {
-        
         self.items?.value.append(contentsOf: [item])
-
     }
     
     func deleteItem(_ itemIndex: Int) {
-        
         self.items?.value.remove(at: itemIndex)
-        
     }
     
+    func showOCR() {
+        coordinator?.showOCR()
+    }
 }

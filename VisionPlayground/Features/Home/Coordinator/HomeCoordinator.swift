@@ -9,7 +9,7 @@
 import UIKit
 
 protocol HomeCoordinatorProtocol: class {
-    func showForm()
+    func showOCR()
 }
 
 class HomeCoordinator: Coordinator {
@@ -30,7 +30,9 @@ class HomeCoordinator: Coordinator {
 }
 
 extension HomeCoordinator: HomeCoordinatorProtocol {
-    func showForm() {
-        
+    func showOCR() {
+        let ocrCoordinator = OCRCoordinator(navigationController: navigationController)
+        childCoordinators.append(ocrCoordinator)
+        ocrCoordinator.start()
     }
 }
